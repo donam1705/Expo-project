@@ -8,7 +8,9 @@
     "android": "expo run:android --port=8082",
     "ios": "expo run:ios --port=8082",
     "web": "expo start --web --port=8082",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "build:android-debug": "cd android && ./gradlew assembleDebug",
+    "build:android-release": "cd android && ./gradlew assembleRelease"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",

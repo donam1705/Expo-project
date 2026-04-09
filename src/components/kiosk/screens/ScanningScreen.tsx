@@ -52,36 +52,29 @@ export const ScanningScreen: React.FC<ScanningScreenProps> = ({
         </View>
       </View>
 
-      {recentActivity.length === 0 && isLandscape ? (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <Ionicons name="documents-outline" size={60} color={Theme.colors.border} />
-          <ThemedText style={{ color: Theme.colors.text.muted, fontSize: 16, marginTop: 15 }}>
-            Chưa có lịch sử điểm danh
-          </ThemedText>
+      <View
+        style={[
+          styles.instructionCard,
+          styles.historyListCard,
+          {
+            flex: 1,
+            maxHeight: isLandscape ? undefined : 420,
+            marginBottom: 0,
+            marginTop: 0,
+            shadowColor: 'transparent',
+            shadowOpacity: 0,
+            shadowRadius: 0,
+            shadowOffset: { width: 0, height: 0 },
+            elevation: 0,
+          },
+        ]}
+      >
+        <View style={styles.cardHeader}>
+          <ThemedText style={styles.cardHeaderText}>LỊCH SỬ QUÉT THẺ</ThemedText>
+          <MaterialCommunityIcons name="history" size={18} color={Theme.colors.text.secondary} />
         </View>
-      ) : recentActivity.length > 0 ? (
-        <View
-          style={[
-            styles.instructionCard,
-            styles.historyListCard,
-            {
-              flex: 1,
-              maxHeight: isLandscape ? undefined : 420,
-              marginBottom: 0,
-              marginTop: 0,
-              shadowColor: 'transparent',
-              shadowOpacity: 0,
-              shadowRadius: 0,
-              shadowOffset: { width: 0, height: 0 },
-              elevation: 0,
-            },
-          ]}
-        >
-          <View style={styles.cardHeader}>
-            <ThemedText style={styles.cardHeaderText}>LỊCH SỬ QUÉT THẺ</ThemedText>
-            <MaterialCommunityIcons name="history" size={18} color={Theme.colors.text.secondary} />
-          </View>
-          <View style={{ flex: 1, overflow: 'hidden' }}>
+        <View style={{ flex: 1, overflow: 'hidden' }}>
+          {recentActivity.length > 0 ? (
             <ScrollView
               nestedScrollEnabled
               showsVerticalScrollIndicator
@@ -98,9 +91,16 @@ export const ScanningScreen: React.FC<ScanningScreenProps> = ({
                 />
               ))}
             </ScrollView>
-          </View>
+          ) : (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', opacity: 0.5 }}>
+              <Ionicons name="documents-outline" size={ms(40)} color={Theme.colors.border} />
+              <ThemedText style={{ color: Theme.colors.text.muted, fontSize: ms(14), marginTop: ms(10) }}>
+                Chưa có lịch sử điểm danh
+              </ThemedText>
+            </View>
+          )}
         </View>
-      ) : null}
+      </View>
     </View>
   );
 

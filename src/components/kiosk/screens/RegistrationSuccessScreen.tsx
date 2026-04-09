@@ -90,7 +90,7 @@ export const RegistrationSuccessScreen: React.FC<{
       onPress={resetToScanning}
     >
       <ThemedText style={[styles.primaryButtonText, { color: Theme.colors.text.secondary, fontSize: ms(16) }]}>
-        ĐÓNG ({countdown}s)
+        ĐÓNG
       </ThemedText>
     </TouchableOpacity>
   );

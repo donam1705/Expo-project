@@ -153,6 +153,7 @@ export const useKioskLogic = () => {
           setUnregisteredTagId(null);
           setSearchQuery('');
           setRegistrationTargetName('');
+          setSelectedEmployeeForUpdate(null);
           readTag();
         }, 10000);
       } else {
@@ -163,6 +164,18 @@ export const useKioskLogic = () => {
     } finally {
       setIsUpdating(false);
     }
+  };
+
+  const resetToScanning = () => {
+    setShowRegSuccess(false);
+    setShowAddForm(false);
+    setUnregisteredTagId(null);
+    setSearchQuery('');
+    setRegistrationTargetName('');
+    setSelectedEmployeeForUpdate(null);
+    setEmployee(null);
+    setError(null);
+    readTag();
   };
 
   const handleAddUser = async () => {
@@ -252,6 +265,6 @@ export const useKioskLogic = () => {
     recentActivity, unregisteredTagId, allEmployees, searchQuery, isLoadingEmployees,
     isUpdating, registrationTargetName, selectedEmployeeForUpdate, attendanceHistory, countdown, lastStatus,
     setError, readTag, handleAddUser, setIsAdminAuthMode, setEmployee,
-    setSelectedEmployeeForUpdate, handleUpdateEmployeeNfc, setShowAddForm, setUnregisteredTagId, setSearchQuery
+    setSelectedEmployeeForUpdate, handleUpdateEmployeeNfc, setShowAddForm, setUnregisteredTagId, setSearchQuery, resetToScanning
   };
 };
